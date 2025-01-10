@@ -35,7 +35,7 @@ const Edit = () => {
 
   return (
     <div>
-      <h1 className="display-2">Edit Blog</h1>
+      <h1 className="display-6">Edit Blog</h1>
       <BlogForm
         prevTitle={blog.title}
         prevContent={blog.content}
