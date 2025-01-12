@@ -27,7 +27,7 @@ function NavBar({
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav " />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav className="ml-auto align-items-end mx-4 justify-content-end">
+          <Nav className="ml-auto align-items-end mx-4 justify-content-end" >
             <Nav.Link as={NavLink} to="/">
               Home
             </Nav.Link>

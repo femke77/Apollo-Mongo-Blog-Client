@@ -42,7 +42,7 @@ const BlogForm = ({
           onChange={(e) => setBlog({ ...blog, title: e.target.value })}
         />
       </Form.Group>
-      <Form.Group>
+      <Form.Group className="my-3">
         <Form.Label>Content</Form.Label>
         <Form.Control
           value={blog.content}

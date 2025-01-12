@@ -28,7 +28,7 @@ const CommentForm = ({ blogId }: { blogId: string | undefined }) => {
           onChange={(e) => setComment(e.target.value)}
         />
       </Form.Group>
-      <Button className="my-3"variant="primary" type="submit">
+      <Button className="m-3"variant="primary" type="submit">
         Submit
       </Button>
       {error && <div className="text-danger pb-3"> {error.message}</div>}

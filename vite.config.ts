@@ -7,10 +7,10 @@ export default defineConfig({
     port: 3000,
     open: true,
     host: true, // opens to network on your internet for other devices to access
-    proxy: {
+    proxy: { //Dev only
       // stops CORS errors as well as allows fetches to have relative paths
       "/graphql": {
-        target: "https://apollo-mongo-blog-server.onrender.com",
+        target: "http://localhost:3001",
         changeOrigin: true,
         secure: false,
       },
