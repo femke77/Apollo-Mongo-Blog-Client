@@ -48,12 +48,12 @@ const BlogForm = ({
           value={blog.content}
           as="textarea"
           name="content"
-          rows={2}
+          rows={6}
           onChange={(e) => setBlog({ ...blog, content: e.target.value })}
         />
       </Form.Group>
       <Button className="my-3" variant="primary" type="submit">
-        Submit
+        Update
       </Button>
     </Form>
   );
