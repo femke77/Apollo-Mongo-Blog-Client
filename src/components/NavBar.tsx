@@ -12,7 +12,7 @@ function NavBar({
   loggedIn: boolean;
   setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  
+
   const navigate = useNavigate();
   const navRef = useRef<HTMLButtonElement>(null);
 
@@ -24,10 +24,9 @@ function NavBar({
   };
 
   const close = () => {
-    console.log(navRef.current);
     navRef.current?.click();
-
   }
+  
   return (
     <Navbar expand="lg" className="bg-body-tertiary mb-2 ">
       <Container fluid>

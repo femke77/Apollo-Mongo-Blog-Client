@@ -1,6 +1,8 @@
 import { Form, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useLoggedIn } from "../App";
+import auth from "../utils/auth";
 
 // using this form for both adding and editing a blog which means sometimes we have to prefill the form with the previous values
 // and sometimes we don't. 
@@ -16,6 +18,7 @@ const BlogForm = ({
   const navigate = useNavigate();
   const [blog, setBlog] = useState({ title: prevTitle, content: prevContent });
 
+
   useEffect(() => {
     setBlog({ title: prevTitle, content: prevContent });
   }, [prevTitle, prevContent]);
@@ -24,7 +27,7 @@ const BlogForm = ({
     event.preventDefault();
     try {
       await onSubmitFn(blog);
-      setBlog({ title: "", content: "" });
+      // setBlog({ title: "", content: "" });
       navigate("/");
     } catch (e) {
       console.error(e);
@@ -32,30 +35,33 @@ const BlogForm = ({
   };
 
   return (
-    <Form onSubmit={handleFormSubmit}>
-      <Form.Group>
-        <Form.Label>Title</Form.Label>
-        <Form.Control
-          value={blog.title}
-          as="input"
-          name="title"
-          onChange={(e) => setBlog({ ...blog, title: e.target.value })}
-        />
-      </Form.Group>
-      <Form.Group className="my-3">
-        <Form.Label>Content</Form.Label>
-        <Form.Control
-          value={blog.content}
-          as="textarea"
-          name="content"
-          rows={6}
-          onChange={(e) => setBlog({ ...blog, content: e.target.value })}
-        />
-      </Form.Group>
-      <Button className="my-3" variant="primary" type="submit">
-        Update
-      </Button>
-    </Form>
+    <>
+      {auth.loggedIn() ? (<Form onSubmit={handleFormSubmit}>
+        <Form.Group>
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            value={blog.title}
+            as="input"
+            name="title"
+            onChange={(e) => setBlog({ ...blog, title: e.target.value })}
+          />
+        </Form.Group>
+        <Form.Group className="my-3">
+          <Form.Label>Content</Form.Label>
+          <Form.Control
+            value={blog.content}
+            as="textarea"
+            name="content"
+            rows={6}
+            onChange={(e) => setBlog({ ...blog, content: e.target.value })}
+          />
+        </Form.Group>
+        <Button className="my-3" variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>) : <Navigate to="/login" />}
+
+    </>
   );
 };
 

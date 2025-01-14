@@ -1,11 +1,17 @@
 import { Button } from "react-bootstrap";
 import BlogList from "../components/BlogList";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { useLoggedIn } from "../App";
+import auth from "../utils/auth";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [loggedIn] = useLoggedIn();
+  const [loggedIn, setLoggedIn] = useLoggedIn();
+
+    if (!auth.loggedIn()){
+      setLoggedIn(false);
+      return <Navigate to="/login" />;
+    }
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center">

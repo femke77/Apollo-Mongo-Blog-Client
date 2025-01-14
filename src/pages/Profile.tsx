@@ -5,8 +5,10 @@ import Blog from "../components/Blog";
 import { Button } from "react-bootstrap";
 import React from "react";
 import { IBlog } from "../interfaces/Blog";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import AddBlog from "../components/AddBlog";
+import { useLoggedIn } from "../App";
+import auth from "../utils/auth";
 
 const Profile = () => {
   const { loading, data, error } = useQuery(GET_ME, {
@@ -14,6 +16,8 @@ const Profile = () => {
   });
 
   const blogs = data?.me.blogs || [];
+  
+  const [_, setLoggedIn] = useLoggedIn();
 
   const [deleteBlog] = useMutation(REMOVE_BLOG, {
     refetchQueries: [{ query: GET_ME }], // Refetch the GET_ME query
@@ -27,6 +31,11 @@ const Profile = () => {
     await deleteBlog({ variables: { blogId: e.currentTarget.value } });
   };
 
+  if (!auth.loggedIn()){
+    setLoggedIn(false);
+    return <Navigate to="/login" />;
+  }
+  
   if (loading) {
     return <div>Loading...</div>;
   }
