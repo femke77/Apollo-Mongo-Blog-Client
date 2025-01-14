@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/edit-blog/:blogId",
-        element: <Edit />,
+        element: <AuthGuard><Edit /></AuthGuard>,
       },
       {
         path: "/login",

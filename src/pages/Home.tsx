@@ -1,19 +1,23 @@
-import { Button } from "react-bootstrap";
+import { Button, } from "react-bootstrap";
 import BlogList from "../components/BlogList";
-import { useNavigate, Link, Navigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useLoggedIn } from "../App";
 import auth from "../utils/auth";
+import HideModal from "../components/Modal";
 
 const Home = () => {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useLoggedIn();
+  const cookie = document.cookie
 
-    if (!auth.loggedIn()){
-      setLoggedIn(false);
-      return <Navigate to="/login" />;
-    }
+  if (!auth.loggedIn()) {
+    setLoggedIn(false);
+
+  }
   return (
     <div>
+      {!cookie && <HideModal />}
+
       <div className="d-flex justify-content-between align-items-center">
         <p className="display-6">Latest Blogs....</p>
         {!loggedIn ? (
