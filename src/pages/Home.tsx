@@ -9,11 +9,12 @@ const Home = () => {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useLoggedIn();
   const cookie = document.cookie
-
+  console.log(cookie);
+  
   if (!auth.loggedIn()) {
     setLoggedIn(false);
-
   }
+
   return (
     <div>
       {!cookie && <HideModal />}

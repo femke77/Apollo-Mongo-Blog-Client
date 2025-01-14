@@ -12,7 +12,7 @@ const BlogList = () => {
   const blogs = data?.blogs || [];
   
   if (loading) {
-    return <div>Loading... This could take a while. </div>;
+    return <div>Loading...  </div>;
   }
 
   return (

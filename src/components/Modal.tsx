@@ -22,7 +22,7 @@ function HideModal() {
     
 
         <Modal.Body>
-          <p>Due to the server being a free app on Render.com, initial load times maybe be 50+ seconds.</p>
+          <p>Due to the server being a free app on <a href="https://www.render.com" target='_blank'>Render.com</a>, initial load times maybe be 50+ seconds.</p>
         </Modal.Body>
 
         <Modal.Footer className="d-flex justify-content-between">
