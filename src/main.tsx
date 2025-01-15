@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <h1 className="display-2">We can't find the page you are looking for.</h1>,
+    errorElement: <h1 className="display-6 m-5 text-center">We can't find the page you are looking for. <br/>😔</h1>,
     children: [
       {
         index: true,
