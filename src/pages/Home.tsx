@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <div>
-      {!cookie && <HideModal />}
+      {!cookie.includes("hidePopup=true") && <HideModal />}
 
       <div className="d-flex justify-content-between align-items-center">
         <p className="display-6">Latest Blogs....</p>
