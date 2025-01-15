@@ -8,12 +8,12 @@ import Blog from "./pages/SingleBlog";
 import Profile from "./pages/Profile";
 import Edit from "./pages/Edit";
 import Login from "./pages/Login";
-
+import Error from "./pages/Error.js";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <h1 className="display-6 m-5 text-center">We can't find the page you are looking for. <br/>😔</h1>,
+    errorElement: <Error/>,
     children: [
       {
         index: true,
